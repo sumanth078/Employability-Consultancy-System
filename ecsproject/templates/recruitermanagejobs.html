@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+  <title>Manage Recruiter Posted Jobs</title>
+    <style>
+        table {
+  font-family: Arial, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+  margin: 0 auto;
+}
+
+td, th {
+  border: 1px solid #ddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.button {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+      <div class="navbar-logo">
+        <a href="{% url 'recruiterhome' %}">
+          <img src="{% static 'images/logo.png' %}" alt="Company Logo">
+        </a>
+      </div>
+      <ul>
+        <li><a href="{% url 'recruiterhome' %}">Home</a></li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">Jobs
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="{% url 'postjob' %}">Post New Job</a>
+              <a href="#">Manage jobs</a>
+              <a href="#">Offer Internships</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">Candidates
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="{% url 'newapplicants' %}">New Applicants</a>
+              <br>
+              <a href="{% url 'addcandidate' %}">Add Candidate</a>
+              <br>
+              <a href="{% url 'managecandidate' %}">Manage Candidates</a>
+              <br>
+              <a href="{% url 'searchresume' %}">Search Resume</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">Interviews
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="{% url 'addinterview' %}">Conduct Interview</a>
+              <br>
+              <a href="{% url 'interviewlist' %}">Interview List</a>
+            </div>
+          </div>
+        </li>
+        <li><a href="{% url 'recruitercontact' %}">Contact</a></li>
+      </ul>
+      <div class="navbar-right">
+        <ul>
+          <li>
+            <div class="dropdown">
+              <button class="dropbtn">Profile
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="{% url 'recruiterprofile' %}">View profile</a>
+                <a href="{% url 'recruiterprofile' %}">Edit profile</a>
+                <a href="{% url 'recruiterchangepwd' %}">Change Password</a>
+              </div>
+            </div>
+          </li>
+          <li><a href="{% url 'recruiterlogout' %}">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+<br><br><br>
+<h2 align="center"><u>View All Posted Jobs</u></h2>
+<br>
+Total Jobs = {{count}}  <br><br>
+<center>
+<table align="center" border="2">
+    <tr style="font-weight:bold">
+        <td>ID</td>
+        <td>Job Title</td>
+        <td>Openings</td>
+        <td>Type Of Category</td>
+        <td>Gender Preferences</td>
+        <td>Job Description</td>
+        <td>Contact Details</td>
+        <td>Minimum Salary</td>
+        <td>Maximum Salary</td>
+        <td>Seekers Applied</td>
+        <td>Action</td>
+    </tr>
+
+    {% for pj in postedjobslist%}
+    <tr>
+        <td>{{pj.id}}</td>
+        <td>{{pj.title}}</td>
+        <td>{{pj.openings}}</td>
+        <td>{{pj.category}}</td>
+        <td>{{pj.gender}}</td>
+        <td>{{pj.description}}</td>
+        <td>{{pj.contactdetails}}</td>
+        <td>{{pj.minsalary}}</td>
+        <td>{{pj.maxsalary}}</td>
+        <td>{{pj.cnt}}</td>
+        <td>
+
+            <a href="/deletepostedjobs/{{pj.id}}" class="button">Delete</a>
+
+        </td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+</center>
+</body>
+</html>

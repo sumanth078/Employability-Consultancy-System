@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+  <head>
+    <title>Job Seeker Registration</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/registration.css' %}">
+   </head>
+<body>
+    <nav class="navbar">
+      <div class="navbar-logo">
+        <a href="{% url 'adminhome' %}">
+          <img src="{% static 'images/logo.png' %}" alt="Company Logo">
+        </a>
+      </div>
+      <ul>
+        <li><a href="{% url 'adminhome' %}">Home</a></li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">Add
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="{% url 'addseeker' %}">Add Seeker</a>
+              <a href="{% url 'addrecruiter' %}">Add Recruiter</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">View
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="{% url 'viewseekerdata' %}">View SeekerData</a>
+              <br>
+              <a href="{% url 'viewrecruiterdata' %}">View RecruiterData</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">Update
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="{% url 'updateseeker' %}">Update Seeker</a>
+              <br>
+              <a href="{% url 'updaterecruiter' %}">Update Recruiter</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="navbar-right">
+        <ul>
+          <li><a href="{% url 'adminlogout' %}">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+  <div class="container">
+    <div class="title">Registration</div>
+    <h3 align="center"><mark>{{msg}}</mark></h3>
+    <div class="content">
+      <form method="post">
+        {% csrf_token %}
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details" class="fullname">Full Name</span>
+            <input type="text" name="fullname" placeholder="Enter your name" required>
+          </div>
+          <div class="input-box">
+            <span class="details" name="username">Username</span>
+            <input type="text" name="username" placeholder="Enter your username" required>
+          </div>
+          <div class="input-box">
+            <span class="details" name="email">Email</span>
+            <input type="email" name="email" placeholder="Enter your email" required>
+          </div>
+          <div class="input-box">
+            <span class="details" name="phone">Phone Number</span>
+            <input type="number" name="phone" placeholder="Enter your number" required>
+          </div>
+          <div class="input-box">
+            <span class="details" name="password">Password</span>
+            <input type="password" name="password" placeholder="Enter your password" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input type="password" placeholder="Confirm your password" required>
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" value="Add">
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

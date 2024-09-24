@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+  <title>Home</title>
+</head>
+<body>
+    <nav class="navbar">
+      <div class="navbar-logo">
+        <a href="{% url 'seekerhome' %}">
+          <img src="{% static 'images/logo.png' %}" alt="Company Logo">
+        </a>
+      </div>
+      <ul>
+        <li><a href="{% url 'seekerhome' %}">Home</a></li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">Jobs
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="#">Jobs by category</a>
+              <a href="#">Jobs by skill</a>
+              <a href="#">Jobs by roll</a>
+              <a href="#">Jobs by education</a>
+              <a href="#">Jobs by city</a>
+              <a href="#">Gulf jobs</a>
+              <a href="#">International jobs</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">Internships
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="{% url 'internships' %}">Internships by category</a>
+              <br>
+              <a href="{% url 'internships' %}">Internships by skills</a>
+              <br>
+              <a href="{% url 'internships' %}">Internships by roll</a>
+              <br>
+              <a href="{% url 'internships' %}">Internships by education</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">Resume
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="{% url 'internships' %}">Upload Resume</a>
+              <br>
+              <a href="{% url 'internships' %}">Build Resume</a>
+            </div>
+          </div>
+        </li>
+        <li><a href="{% url 'seekerservices' %}">Services</a></li>
+        <li><a href="{% url 'seekercontact' %}">Contact</a></li>
+      </ul>
+      <div class="navbar-right">
+        <ul>
+          <li><a href="{% url 'seekerprofile' %}">Profile</a></li>
+          <li><a href="{% url 'seekerlogout' %}">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+</body>
+</html>

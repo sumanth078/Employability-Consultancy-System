@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+  <title>Home</title>
+    <style>
+  * {
+      box-sizing: border-box;
+    }
+    .imageColumn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+  </style>
+</head>
+<body>
+    <nav class="navbar">
+      <div class="navbar-logo">
+        <a href="{% url 'adminhome' %}">
+          <img src="{% static 'images/logo.png' %}" alt="Company Logo">
+        </a>
+      </div>
+      <ul>
+        <li><a href="{% url 'adminhome' %}">Home</a></li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">Add
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="{% url 'addseeker' %}">Add Seeker</a>
+              <a href="{% url 'addrecruiter' %}">Add Recruiter</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">View
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="{% url 'viewseekerdata' %}">View SeekerData</a>
+              <br>
+              <a href="{% url 'viewrecruiterdata' %}">View RecruiterData</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">Update
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="{% url 'updateseeker' %}">Update Seeker</a>
+              <br>
+              <a href="{% url 'updaterecruiter' %}">Update Recruiter</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="navbar-right">
+        <ul>
+          <li><a href="{% url 'adminlogout' %}">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+<br><br><br>
+<div class="alignRow">
+
+<div class="imageColumn">
+
+<img src="{% static 'images/ss.png' %}" alt="img4" style="width:50%">
+
+</div>
+</div>
+</body>
+</html>

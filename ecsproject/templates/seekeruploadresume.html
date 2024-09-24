@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+  <title>Upload Resume</title>
+</head>
+<style>
+  /* Style for container */
+.container {
+  width: 50%;
+  margin: auto;
+}
+
+/* Style for form */
+form {
+  display: inline-block;
+  text-align: left;
+  padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+}
+
+/* Style for labels */
+.details {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.contact {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Style for inputs */
+input[type=text], input[type=number], input[type=tel], input[type=email], select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+/* Style for submit button */
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+/* Style for error message */
+.error-msg {
+  color: red;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+</style>
+<body>
+    <nav class="navbar">
+      <div class="navbar-logo">
+        <a href="{% url 'seekerhome' %}">
+          <img src="{% static 'images/logo.png' %}" alt="Company Logo">
+        </a>
+      </div>
+      <ul>
+        <li><a href="{% url 'seekerhome' %}">Home</a></li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn"><a href="{% url 'seekerjobs' %}">Jobs</a>
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="seekerjobsbycategory">Jobs by category</a>
+              <a href="#">Jobs by skill</a>
+              <a href="#">Jobs by roll</a>
+              <a href="#">Jobs by education</a>
+              <a href="#">Jobs by city</a>
+              <a href="#">Gulf jobs</a>
+              <a href="#">International jobs</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">Internships
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="{% url 'internships' %}">Internships by category</a>
+              <br>
+              <a href="{% url 'internships' %}">Internships by skills</a>
+              <br>
+              <a href="{% url 'internships' %}">Internships by roll</a>
+              <br>
+              <a href="{% url 'internships' %}">Internships by education</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">Resume
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="{% url 'internships' %}">Upload Resume</a>
+              <br>
+              <a href="{% url 'internships' %}">Build Resume</a>
+            </div>
+          </div>
+        </li>
+        <li><a href="{% url 'seekerservices' %}">Services</a></li>
+        <li><a href="{% url 'seekercontact' %}">Contact</a></li>
+      </ul>
+      <div class="navbar-right">
+        <ul>
+          <li>
+            <div class="dropdown">
+              <button class="dropbtn">Profile
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="{% url 'seekerprofile' %}">View profile</a>
+                <a href="{% url 'seekerprofile' %}">Edit profile</a>
+                <a href="{% url 'seekerchangepwd' %}">Change Password</a>
+              </div>
+            </div>
+          </li>
+          <li><a href="{% url 'seekerlogout' %}">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+<br><br><br>
+    <div class="container" align="center">
+  <h3 align="center"><mark>{{ msg }}</mark></h3>
+  <div class="content" align="center">
+    <form method="post">
+      {% csrf_token %}
+      <div class="user-details">
+        <div class="input-box">
+          <span class="details" name="firstname">First name</span>
+          <input type="text" name="firstname" placeholder="First name" required>
+        </div>
+        <div class="input-box">
+          <span class="details" name="lastname">Last name</span>
+          <input type="text" name="lastname" placeholder="Last name" required>
+        </div>
+        <div class="input-box">
+          <span class="details" name="age">Age</span>
+          <input type="number" name="age" placeholder="Age" required>
+        </div>
+        <div class="input-box">
+          <span class="contact" name="contact">Contact Number</span>
+          <input type="tel" name="contact" placeholder="Contact Number" required>
+        </div>
+        <div class="input-box">
+          <span class="details" name="email">Email</span>
+          <input type="email" name="email" placeholder="Email" required>
+        </div>
+        <div class="input-box">
+          <span class="details" name="gender" for="gender">Gender</span>
+          <select name="gender" class="details">
+            <option value="">------</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="O">Others</option>
+          </select>
+        </div>
+        <div class="input-box">
+          <span class="details" name="address1">Address</span>
+          <input type="text" name="address1" placeholder="Address" required>
+        </div>
+        <div class="input-box">
+          <span class="details" name="city">City</span>
+          <input type="text" name="city" placeholder="City" required>
+        </div>
+        <div class="input-box">
+          <span class="details" name="state">State</span>
+          <input type="text" name="state" placeholder="State" required>
+        </div>
+        <div class="input-box">
+          <span class="details" name="postalcode">Postal code</span>
+          <input type="number" name="postalcode" placeholder="Postal code" required>
+        </div>
+        <div class="input-box">
+          <span class="details" name="country">Country</span>
+          <input type="text" name="country" placeholder="Country" required>
+        </div>
+        <div class="input-box">
+          <span class="details" name="skills">Skills</span>
+          <input type="text" name="skills" placeholder="Skills" required>
+        </div>
+      </div>
+      <div class="button">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>

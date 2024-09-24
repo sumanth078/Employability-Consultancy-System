@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+    <meta charset="UTF-8">
+    <title>Jobs By Category</title>
+    <style>
+      * {
+  box-sizing: border-box;
+}
+
+.imageColumn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.jobs-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.jobs-card {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+  width: calc(33.33% - 10px);
+}
+
+.jobs-card img {
+  width: 100%;
+}
+
+.jobs-card .course-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.jobs-card .course-description {
+  margin-bottom: 20px;
+}
+
+.jobs-card .enroll-button {
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-size: 1rem;
+}
+
+.jobs-card .enroll-button:hover {
+  background-color: #0069d9;
+}
+
+.jobs-card .view-details-button {
+  background-color: #6c757d;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-size: 1rem;
+}
+
+.jobs-card .view-details-button:hover {
+  background-color: #5a6268;
+}
+
+.jobs-card:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+</style>
+</head>
+<body>
+<nav class="navbar">
+      <div class="navbar-logo">
+        <a href="{% url 'seekerhome' %}">
+          <img src="{% static 'images/logo.png' %}" alt="Company Logo">
+        </a>
+      </div>
+      <ul>
+        <li><a href="{% url 'seekerhome' %}">Home</a></li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn"><a href="{% url 'seekerjobs' %}">Jobs</a>
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="{% url 'seekerjobsbycategory' %}">Jobs by category</a>
+              <a href="#">Jobs by skill</a>
+              <a href="#">Jobs by roll</a>
+              <a href="#">Jobs by education</a>
+              <a href="#">Jobs by city</a>
+              <a href="#">Gulf jobs</a>
+              <a href="#">International jobs</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">Internships
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="{% url 'internships' %}">Internships by category</a>
+              <br>
+              <a href="{% url 'internships' %}">Internships by skills</a>
+              <br>
+              <a href="{% url 'internships' %}">Internships by roll</a>
+              <br>
+              <a href="{% url 'internships' %}">Internships by education</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">Resume
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="{% url 'internships' %}">Upload Resume</a>
+              <br>
+              <a href="{% url 'internships' %}">Build Resume</a>
+            </div>
+          </div>
+        </li>
+        <li><a href="{% url 'seekerservices' %}">Services</a></li>
+        <li><a href="{% url 'seekercontact' %}">Contact</a></li>
+      </ul>
+      <div class="navbar-right">
+        <ul>
+          <li>
+            <div class="dropdown">
+              <button class="dropbtn">Profile
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="{% url 'seekerprofile' %}">View profile</a>
+                <a href="{% url 'seekerprofile' %}">Edit profile</a>
+                <a href="{% url 'seekerchangepwd' %}">Change Password</a>
+              </div>
+            </div>
+          </li>
+          <li><a href="{% url 'seekerlogout' %}">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+<br><br><br>
+<div class="jobs-cards-container">
+    <div class="jobs-card">
+    <img src="{% static 'images/infosys.png' %}" alt="Company Logo">
+    <h2 class="jobs-title">Data Entry Operator</h2>
+    <p class="jobs-description">Location: Mumbai</p>
+       <p class="jobs-description">Start date:Immediately</p>
+     <p class="jobs-description">salary: 5-6.25 LPA</p>
+      <button><a href="{% url 'seekerlogin' %}">View details</a></button>
+      <button><a href="{% url 'seekerlogin' %}">Apply</a></button>
+  </div>
+
+  <div class="jobs-card">
+     <img src="{% static 'images/microsoft.png' %}" alt="Company Logo" width="100",height="108">
+    <h2 class="jobs-title">Application Developer: Microsoft .NET Stack</h2>
+    <p class="jobs-description">Location: Delhi</p>
+       <p class="jobs-description">Start date:Immediately</p>
+     <p class="jobs-description">salary: 5-6.50 LPA</p>
+      <button><a href="{% url 'seekerlogin' %}">View details</a></button>
+      <button><a href="{% url 'seekerlogin' %}">Apply</a></button>
+  </div>
+  <div class="jobs-card">
+      <img src="{% static 'images/ibm.png' %}" alt="Company Logo"  width="100" height="100">
+    <h2 class="jobs-title">iOS Developer with 1 To 6 years of experience</h2>
+    <p class="jobs-description">Location: Mumbai</p>
+       <p class="jobs-description">Start date:Immediately</p>
+     <p class="jobs-description">salary:5-6.25 LPA</p>
+      <button><a href="{% url 'seekerlogin' %}">View details</a></button>
+      <button><a href="{% url 'seekerlogin' %}">Apply</a></button>
+  </div>
+  <div class="jobs-card">
+    <img src="{% static 'images/apple.png' %}" alt="Company Logo" width="50" height="108">
+    <h2 class="jobs-title">Programmer-iPhone/iPad/Andriod</h2>
+    <p class="jobs-description">Location: Chennai</p>
+       <p class="jobs-description">Start date:Immediately</p>
+     <p class="jobs-description">salary: 8 - 9 LPA</p>
+      <button><a href="{% url 'seekerlogin' %}">View details</a></button>
+      <button><a href="{% url 'seekerlogin' %}">Apply</a></button>
+  </div>
+  <div class="jobs-card">
+     <img src="{% static 'images/microsoft.png' %}" alt="Company Logo" width="100",height="108">
+    <h2 class="jobs-title">Application Developer: Microsoft Cloud</h2>
+    <p class="jobs-description">Location: Delhi</p>
+       <p class="jobs-description">Start date:Immediately</p>
+     <p class="jobs-description">salary: 5-6.50 LPA</p>
+      <button><a href="{% url 'seekerlogin' %}">View details</a></button>
+      <button><a href="{% url 'seekerlogin' %}">Apply</a></button>
+  </div>
+
+  <div class="jobs-card">
+    <img src="{% static 'images/infosys.png' %}" alt="Company Logo" width="100",height="108">
+    <h2 class="jobs-title">Senoir Test Developer</h2>
+    <p class="jobs-description">Location: Delhi</p>
+       <p class="jobs-description">Start date:Immediately</p>
+     <p class="jobs-description">salary: 5-6.50 LPA</p>
+      <button><a href="{% url 'seekerlogin' %}">Apply</a></button>
+  </div>
+
+  <div class="jobs-card">
+      <img src="{% static 'images/ibm.png' %}" alt="Company Logo" width="100" height="108">
+    <h2 class="jobs-title">Back Office Executive</h2>
+    <p class="jobs-description">Location: Vizag</p>
+       <p class="jobs-description">Start date:Immediately</p>
+     <p class="jobs-description">salary:1.25-2.25 LPA</p>
+      <button><a href="{% url 'seekerlogin' %}">View details</a></button>
+      <button><a href="{% url 'seekerlogin' %}">Apply</a></button>
+  </div>
+</div>
+</body>
+</html>

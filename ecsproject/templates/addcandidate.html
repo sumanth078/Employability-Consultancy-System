@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+  <title>Home</title>
+    <style>
+  * {
+      box-sizing: border-box;
+    }
+    .imageColumn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+  </style>
+</head>
+<body>
+    <nav class="navbar">
+      <div class="navbar-logo">
+        <a href="{% url 'recruiterhome' %}">
+          <img src="{% static 'images/logo.png' %}" alt="Company Logo">
+        </a>
+      </div>
+      <ul>
+        <li><a href="{% url 'recruiterhome' %}">Home</a></li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">Jobs
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="#">Post New Job</a>
+              <a href="#">Manage jobs</a>
+              <a href="#">Offer Internships</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">Candidates
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="{% url 'newapplicants' %}">New Applicants</a>
+              <br>
+              <a href="{% url 'addcandidate' %}">Add Candidate</a>
+              <br>
+              <a href="{% url 'managecandidate' %}">Manage Candidates</a>
+              <br>
+              <a href="{% url 'searchresume' %}">Search Resume</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">Interviews
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="{% url 'addinterview' %}">Conduct Interview</a>
+              <br>
+              <a href="{% url 'interviewlist' %}">Interview List</a>
+            </div>
+          </div>
+        </li>
+        <li><a href="{% url 'recruitercontact' %}">Contact</a></li>
+      </ul>
+      <div class="navbar-right">
+        <ul>
+          <li><a href="{% url 'recruiterprofile' %}">Profile</a></li>
+          <li><a href="{% url 'recruiterlogout' %}">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+<br><br><br>
+</body>
+</html>

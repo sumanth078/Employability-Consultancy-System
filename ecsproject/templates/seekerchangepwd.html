@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"/>
+  <title>Home</title>
+    <style>
+  * {
+      box-sizing: border-box;
+    }
+    .imageColumn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+  </style>
+</head>
+<body>
+    <nav class="navbar">
+      <div class="navbar-logo">
+        <a href="{% url 'seekerhome' %}">
+          <img src="{% static 'images/logo.png' %}" alt="Company Logo">
+        </a>
+      </div>
+      <ul>
+        <li><a href="{% url 'seekerhome' %}">Home</a></li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">Jobs
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="#">Jobs by category</a>
+              <a href="#">Jobs by skill</a>
+              <a href="#">Jobs by roll</a>
+              <a href="#">Jobs by education</a>
+              <a href="#">Jobs by city</a>
+              <a href="#">Gulf jobs</a>
+              <a href="#">International jobs</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">Internships
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="{% url 'internships' %}">Internships by category</a>
+              <br>
+              <a href="{% url 'internships' %}">Internships by skills</a>
+              <br>
+              <a href="{% url 'internships' %}">Internships by roll</a>
+              <br>
+              <a href="{% url 'internships' %}">Internships by education</a>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">Resume
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="{% url 'internships' %}">Upload Resume</a>
+              <br>
+              <a href="{% url 'internships' %}">Build Resume</a>
+            </div>
+          </div>
+        </li>
+        <li><a href="{% url 'seekerservices' %}">Services</a></li>
+        <li><a href="{% url 'seekercontact' %}">Contact</a></li>
+      </ul>
+      <div class="navbar-right">
+        <ul>
+          <li>
+            <div class="dropdown">
+              <button class="dropbtn">Profile
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="{% url 'seekerprofile' %}">View profile</a>
+                <a href="{% url 'seekerprofile' %}">Edit profile</a>
+                <a href="{% url 'seekerchangepwd' %}">Change Password</a>
+              </div>
+            </div>
+          </li>
+          <li><a href="{% url 'seekerlogout' %}">Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+<br><br><br>
+<div class="alignRow">
+
+        <section class="container forms">
+            <div class="form login">
+                <div class="form-content">
+                    <header>Change Password</header>
+                    <h3 align="center"><mark>{{msg}}</mark></h3>
+                    <form method="post" action="{% url 'seekerupdatepwd' %}">
+                        {% csrf_token %}
+                        <p>Old Password</p>
+                        <div class="field input-field">
+                            <input type="text" name="opwd" placeholder="Enter oldpassword" class="input">
+                        </div>
+                        <p>New Password</p>
+                        <div class="field input-field">
+                            <input type="password" name="npwd" placeholder="Enter newpassword" class="password">
+                        </div>
+
+                        <div class="form-link">
+                            <a href="#" class="forgot-pass">Forgot password?</a>
+                        </div>
+
+                        <div class="field button-field">
+                            <button>Change</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+</div>
+</body>
+</html>

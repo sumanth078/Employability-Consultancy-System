@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+  <head>
+    <title>Job Seeker Registration</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/registration.css' %}">
+   </head>
+<body>
+    <nav class="navbar">
+      <div class="navbar-logo">
+        <a href="{% url 'index' %}">
+          <img src="{% static 'images/logo.png' %}" alt="Company Logo">
+        </a>
+      </div>
+      <ul>
+        <li>     </li>
+        <li>     </li>
+        <li>     </li>
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'aboutus' %}">About</a></li>
+        <li>
+          <div class="dropdown">
+            <button class="dropbtn">Jobs
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="#">Jobs by category</a>
+              <a href="#">Jobs by skill</a>
+              <a href="#">Jobs by roll</a>
+              <a href="#">Jobs by education</a>
+              <a href="#">Jobs by city</a>
+              <a href="#">Gulf jobs</a>
+              <a href="#">International jobs</a>
+            </div>
+          </div>
+        </li>
+        <li><a href="{% url 'services' %}">Services</a></li>
+        <li><a href="{% url 'contactus' %}">Contact</a></li>
+      </ul>
+      <div class="navbar-right">
+        <ul>
+          <li>
+            <div class="dropdown">
+              <button class="dropbtn">Login
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="{% url 'seekerlogin' %}">Job Seeker Login</a>
+                <a href="#">Recruiter Login</a>
+                <a href="#">Admin Login</a>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="dropdown">
+              <button class="dropbtn">SignUp
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href="{% url 'seekerregistration' %}">Job Seeker Registration</a>
+                <br>
+                <a href="#">Recruiter Registration</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <center>
+    <h3 align="Center"><u>Update Seeker</u></h3>
+<h3 align="center"><mark>{{msg}}</mark></h3>
+
+
+
+
+<form method="post">
+    {% csrf_token %}
+
+<table align=center>
+
+    {% for field in seekerform %}
+
+<tr>
+<td><label>{{field.label}}</label></td>
+<td>{{field}}</td>
+</tr>
+
+    {% endfor %}
+
+<tr><td></td></tr>
+
+<tr align=center>
+<td colspan=2><input type="submit" value="Update" class="button"></td>
+</tr>
+
+</table>
+</form>
+    </center>
+</body>
+</html>
